@@ -1,11 +1,13 @@
 services:
   py-test:
-    container_name: py-test
-    build: .
-    #ports:
-    #  - "80:80"
-    volumes:
-      - ./app:/usr/src/app
+    container_name: py-test-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: py-test:latest
+    restart: always
+    ports:
+      - "8085:80" # Sarà raggiungibile digitando IP-DEL-SERVER:8085
 
     networks:
       - frontend

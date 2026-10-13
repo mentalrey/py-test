@@ -1,0 +1,24 @@
+name: Build and Deploy Py-Test
+
+on:
+  push:
+    branches:
+      - main # Si attiva ogni volta che fai un push sul branch main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Userà l'Act Runner installato su Portainer
+    steps:
+      - name: Controlla il codice sorgente
+        uses: actions/checkout@v4
+
+      - name: Build dell'immagine Docker ed esecuzione dello Stack
+        run: |
+          echo "Avvio della compilazione locale..."
+          # Forza la ricompilazione dell'immagine basata sul tuo Dockerfile
+          docker compose build --no-cache
+          
+          # Avvia il container in background aggiornandolo
+          docker compose up -d py-test
+          
+          echo "Deploy completato con successo!"

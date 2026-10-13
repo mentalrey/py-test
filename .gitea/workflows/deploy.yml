@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     #runs-on: docker://docker:24-cli
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # deve usare l'immagine completa di comando docker
     steps:
       - name: Controlla il codice sorgente
         uses: actions/checkout@v4

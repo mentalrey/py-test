@@ -1,16 +1,13 @@
-services:
-  itaverso-ai:
-    container_name: itaverso-ai
-    build: .
-    #ports:
-    #  - "80:80"
-    volumes:
-      - ./app:/usr/src/app
+FROM python:3.10-alpine
 
-    networks:
-      - nginx-proxy-manager_default
+# Imposta la cartella di lavoro dentro il container
+WORKDIR /usr/src/app
 
-networks:
-  nginx-proxy-manager_default:
-    external: true
+# Crea una pagina HTML di test all'avvio
+RUN echo "<h1>Deploy Automatizzato di Test Funzionante!</h1>" > index.html
 
+# Espone la porta interna del container
+EXPOSE 80
+
+# Avvia un server web super minimale nativo di Python sulla porta 80
+CMD ["python", "-m", "http://server", "80"]

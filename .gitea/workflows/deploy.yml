@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # Userà l'Act Runner installato su Portainer
+    runs-on: docker://docker:24-cli # Userà l'Act Runner installato su Portainer
     steps:
       - name: Controlla il codice sorgente
         uses: actions/checkout@v4
